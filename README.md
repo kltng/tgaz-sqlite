@@ -23,18 +23,26 @@ A portable SQLite conversion of the **Temporal Gazetteer (TGAZ)** — the China 
 
 ## Quick start
 
-No dependencies beyond Python 3 (uses only `sqlite3`, `json`, `re` from the standard library).
+No dependencies beyond Python 3 (standard library only).
+
+**Download the database from Hugging Face:**
+https://huggingface.co/datasets/kltng/tgaz-sqlite (62 MB zip, unzips to the 228 MB `tgaz.db`).
 
 ```bash
-git clone https://github.com/sije/tgaz-sqlite.git
+git clone https://github.com/kltng/tgaz-sqlite.git
 cd tgaz-sqlite
-
-# Note: tgaz.db is tracked with Git LFS — make sure git-lfs is installed
-# brew install git-lfs   # macOS
-# apt install git-lfs    # Debian/Ubuntu
-
+curl -L -o tgaz.zip https://huggingface.co/datasets/kltng/tgaz-sqlite/resolve/main/tgaz_20260325.zip
+unzip tgaz.zip          # gives tgaz.db
 python3 query_tgaz.py "北京"
 ```
+
+`latest.json` in the dataset names the current release and its SHA-256 checksums.
+The [tgaz-sqlite skill](https://github.com/kltng/humanities-skills/tree/main/tgaz-sqlite)
+in humanities-skills does all of this with `python3 scripts/query_tgaz.py setup`.
+
+The `tgaz.db` file in this repo (Git LFS) is kept only for old links. Please download
+from Hugging Face instead: GitHub's free LFS bandwidth runs out after a few downloads.
+To clone without it: `GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/kltng/tgaz-sqlite.git`.
 
 ## CLI usage
 
